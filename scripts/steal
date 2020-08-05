@@ -1,0 +1,7 @@
+set -ex
+rm -rf ~/.vim/**/*/.git
+cp -r ~/.vim .
+rm -rf .vim/keikun.vim
+tar -cvf .vim.tar .vim
+rm -rf .vim
+cp ~/.vimrc .
