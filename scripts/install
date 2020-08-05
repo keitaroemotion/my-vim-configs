@@ -12,3 +12,5 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 mkdir -p ~/.vim/bundle
 vim +PluginInstall +qall
 vim +NeoBundleInstall +qall
+mkdir $HOME/.vim/scripts
+cp scripts/* $HOME/.vim/scripts

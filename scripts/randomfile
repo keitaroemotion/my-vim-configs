@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
-files=$(find . -type f | grep -v git | grep -v .class)
-len=$(find . -type f | grep -v git | grep -v .class | wc -l)
+if [ "$1" == "-b" ]; then
+    files=$(find . -perm +111 -type f | grep -v .git)
+    len=$(find . -perm +111 -type f | grep -v .git)
+else
+    files=$(find . -type f | grep -v git | grep -v .class)
+    len=$(find . -type f | grep -v git | grep -v .class | wc -l)
+fi
+
 idx=$(echo $((1 + RANDOM % $len)))
 i=0
 target_file=$file

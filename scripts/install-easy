@@ -1,1 +1,3 @@
 cp .vimrc ~
+mkdir -p $HOME/.vim/scripts
+cp scripts/* $HOME/.vim/scripts

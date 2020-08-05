@@ -268,7 +268,7 @@ function Jumpv()
     execute "vsp " . result
 endfunction
 
-let script_dir = "/Users/kei.sugano/.vim/keikun.vim/scripts/"
+let script_dir = "~/.vim/scripts/"
 
 :command! -nargs=? Randopen :call Randopen(<f-args>)
 function! Randopen(...)
