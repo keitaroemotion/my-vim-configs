@@ -1,7 +1,3 @@
-ahttps://github.com/Shougo/dein.vim
-
-"source ~/.vim/keikun.vim/autoload/work.vim
-
 :command! -nargs=0 Strings :call Strings()
 function Strings() 
    let assfile = @% . ".strings"
