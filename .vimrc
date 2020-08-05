@@ -1,4 +1,4 @@
-"https://github.com/Shougo/dein.vim
+ahttps://github.com/Shougo/dein.vim
 
 "source ~/.vim/keikun.vim/autoload/work.vim
 
@@ -283,9 +283,9 @@ endfunction
 :command! -nargs=? Randopenb :call Randopenb(<f-args>)
 function! Randopenb(...)
     if a:0 >= 1
-        let result = system(g:script_dir . "randomfileb " . a:1)
+        let result = system(g:script_dir . "randomfile -b " . a:1)
     else
-        let result = system(g:script_dir . "randomfileb ")
+        let result = system(g:script_dir . "randomfile -b ")
     endif
     execute "edit " . result
 endfunction
