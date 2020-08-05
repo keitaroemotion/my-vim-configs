@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+files=$(find . -type f | grep -v git | grep -v .class)
+len=$(find . -type f | grep -v git | grep -v .class | wc -l)
+idx=$(echo $((1 + RANDOM % $len)))
+i=0
+target_file=$file
+for file in $files; do
+    if [ "$i" == "$idx" ]; then
+        target_file=$file
+    fi
+    i=$((i+1))
+done
+echo $target_file
