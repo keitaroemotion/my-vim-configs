@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+frontend=false
+if [ -f package.json ]; then
+  rm package.json
+  frontend=true
+fi
+
+git commit -v $@
+
+if [ $frontend == true ]; then
+    git co HEAD package.json
+fi

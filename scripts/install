@@ -14,3 +14,4 @@ vim +PluginInstall +qall
 vim +NeoBundleInstall +qall
 mkdir $HOME/.vim/scripts
 cp scripts/* $HOME/.vim/scripts
+cp aliases/* /usr/local/bin
