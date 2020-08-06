@@ -480,6 +480,7 @@ endfunction
 "
 " Bookmark
 "
+command! Ctags        call system("ctags -R .")
 command! Gmail        call WebOpen("mail.google.com/mail/u/1/?pli=1#inbox")
 command! Twitter      call WebOpen("twitter.com/tobasojyo")
 command! Twitternew   call WebOpen("twitter.com/compose/tweet")
