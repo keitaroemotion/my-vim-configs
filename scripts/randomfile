@@ -2,13 +2,14 @@
 
 if [ "$1" == "-b" ]; then
     files=$(find . -perm +111 -type f | grep -v .git)
-    len=$(find . -perm +111 -type f | grep -v .git)
+    len=$(echo $files | tr -s ' ' '\n' | wc -l)
 else
     files=$(find . -type f | grep -v git | grep -v .class)
-    len=$(find . -type f | grep -v git | grep -v .class | wc -l)
+    len=$(echo $files | tr -s ' ' '\n' | wc -l)
 fi
 
-idx=$(echo $((1 + RANDOM % $len)))
+#idx=$(echo $((1 + RANDOM % $len)))
+idx=$(echo $((RANDOM % $len)))
 i=0
 target_file=$file
 for file in $files; do
