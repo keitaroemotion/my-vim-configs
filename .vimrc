@@ -494,10 +494,22 @@ command! Sugawiki     call WebOpen("bitbucket.org/keisugano/personal-wiki/src/ma
 command! Bible        call WebOpen("www.chinesebibleonline.com") 
 command! Hub          call WebOpen("employment.en-japan.com/engineerhub/")
 command! Forbes       call WebOpen("www.forbes.com")
+command! File         call File()
+command! Xxd          call Xxd()
 command! Url          call Url()
 :command! -nargs=? Baidu :call Baidu(<f-args>)
 command! Lf :%s/,/,\r/g
-   
+
+function! Xxd()
+    let result = system("xxd -b " . @%)
+    echo result
+endfunction
+  
+function! File()
+    let result = system("file " . @%)
+    echo result
+endfunction
+
 function! Url()
     let line=getline('.')
     let result = system(g:script_dir . "openhttp " . getline('.'))

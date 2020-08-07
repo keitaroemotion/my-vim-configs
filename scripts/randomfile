@@ -4,7 +4,7 @@ if [ "$1" == "-b" ]; then
     files=$(find . -perm +111 -type f | grep -v .git)
     len=$(echo $files | tr -s ' ' '\n' | wc -l)
 else
-    files=$(find . -type f | grep -v git | grep -v .class)
+    files=$(find . -type f | grep -v git | grep -v .class | grep -v .png | grep -v .ico | grep -v .jpg | grep -v .PNG | grep -v .gif)
     len=$(echo $files | tr -s ' ' '\n' | wc -l)
 fi
 

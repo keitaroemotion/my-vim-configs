@@ -2,3 +2,4 @@ cp .vimrc ~
 mkdir -p $HOME/.vim/scripts
 cp scripts/* $HOME/.vim/scripts
 cp aliases/* /usr/local/bin
+cp scripts/ins /usr/local/bin
