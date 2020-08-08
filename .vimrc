@@ -5,6 +5,17 @@ function Strings()
    exe 'edit ' . assfile
 endfunction
 
+:command! -nargs=? Bash :call Bash(<f-args>)
+function Bash(...) 
+  if a:0 >=1
+    "echo a:000  
+    let result = system("" . a:1)
+  else
+     let result = system("ls")
+  endif
+  echo result
+endfunction
+
 :command! -nargs=0 Nm :call Nm()
 function Nm() 
    let assfile = @% . ".nm"
