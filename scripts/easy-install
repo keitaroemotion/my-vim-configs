@@ -3,5 +3,6 @@ mkdir -p $HOME/.vim/scripts
 cp scripts/* $HOME/.vim/scripts
 cp aliases/* /usr/local/bin
 cp scripts/ins /usr/local/bin
+rm /usr/local/bin/sugamd.py
 wget https://raw.githubusercontent.com/keitaroemotion/markdown-viewer-on-terminal-macosx/master/sugamd.py -P /usr/local/bin
 chmod +x /usr/local/bin/sugamd.py

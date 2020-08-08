@@ -481,7 +481,7 @@ endfunction
 
 :command! -nargs=0 Markdown :call Markdown()
 function! Markdown()
-    :! sugamd.py
+    :! sugamd.py | less -R
 endfunction
 
 :command! -nargs=? Sed :call Sed(<f-args>)
