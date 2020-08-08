@@ -479,6 +479,11 @@ function! Dic(...)
     echo result
 endfunction
 
+:command! -nargs=0 Markdown :call Markdown()
+function! Markdown()
+    :! sugamd.py %
+endfunction
+
 :command! -nargs=? Sed :call Sed(<f-args>)
 function! Sed(...)
     if a:0 >= 1
