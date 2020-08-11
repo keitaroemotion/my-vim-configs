@@ -1,4 +1,4 @@
-:command! -nargs=0 Strings :call Strings()
+:comman! -nargs=0 Strings :call Strings()
 function Strings() 
    let assfile = @% . ".strings"
    let result = system('strings ' . @% . ' >> ' . assfile)
@@ -330,12 +330,6 @@ function Filename()
     let result = system("echo " . @% . " | pbcopy")
 endfunction
   
-:command! Komment   call Komment()
-function! Komment()
-    let result = system(g:script_dir . "comgen " . expand('%:p'))
-    put =result
-endfunction
-  
 "
 " Unix
 "
@@ -517,9 +511,25 @@ command! Url          call Url()
 :command! -nargs=? Baidu :call Baidu(<f-args>)
 command! Lf :%s/,/,\r/g
 
+:command! -nargs=0 Xxd :call Xxd()
 function! Xxd()
-    let result = system("xxd -b " . @%)
-    echo result
+    let xxdfile = @% . ".xxd"
+    let result = system("xxd -b " . @%. ' > ' . xxdfile)
+    exe 'edit ' . xxdfile
+endfunction
+
+:command! -nargs=0 Hex :call Hex()
+function! Hex()
+    let hexfile = @% . ".16"
+    let result = system("hex -C " . @%. ' > ' . hexfile)
+    exe 'edit ' . hexfile
+endfunction
+ 
+:command! -nargs=0 Hexdump :call Hexdump()
+function! Hexdump()
+    let hexfile = @% . ".16"
+    let result = system("hexdump -C " . @%. ' > ' . hexfile)
+    exe 'edit ' . hexfile
 endfunction
   
 function! File()
@@ -729,38 +739,6 @@ function! Cached()
 endfunction
 
 "
-" Grails
-"
-:command! -nargs=? GrailsCreateApp :call GrailsCreateApp(<f-args>)
-function! GrailsCreateApp(...)
-    if a:0 >= 1
-        let result = system("~/.vim/cmd/grails-create-app " . a:1 )
-        echo result
-    else
-    endif
-endfunction
-
-"
-" Grails Run App
-"
-:command! -nargs=? GrailsRunApp :call GrailsRunApp(<f-args>)
-function! GrailsRunApp(...)
-    echo "\ngrails run-app\n" 
-endfunction
-
-"
-" Grails Make Anyway (Scaffolding)
-"
-:command! -nargs=? GrailsScaffold :call GrailsScaffold(<f-args>)
-function! GrailsScaffold(...)
-    if a:0 >= 1
-        let result = system( "~/.vim/cmd/grails-make-anyway " . a:1)
-        echo result
-    else
-    endif
-endfunction
-
-"
 " HTML
 "
 :command! SortCss :call SortCss()
@@ -770,48 +748,18 @@ function! SortCss()
     :e!
 endfunction
 
-command! Macdown call Macdown() 
-function! Macdown()
-    let result = system("macdown " . @%)
-endfunction
-
-command! WikiCurr call WikiCurr() 
-function! WikiCurr()
-    let result = system("touch ~/sugadoc/" . expand("<cword>") . ".md")
-    echo "Wiki created!"
-endfunction
-
-command! SugadocUpdate call SugadocUpdate() 
-function! SugadocUpdate()
-    let result = system("cd ~/sugadoc; git add .; git commit -m 'articles added'; git push origin HEAD")
-    echo result
-endfunction
-
 command! ConfWifi call ConfWifi()
 function! ConfWifi()
     :e ~/.vim/keikun.vim/secrets/wifi.txt
 endfunction
 
-command! Vimrc call Vimrc()
-function! Vimrc()
-    :e ~/.vimrc
-endfunction
-
-command! Install call Install()
-function! Install()
-    let result = system("./scripts/installer")
-    echo result
+function! SourceVim()
+    :source ~/.vimrc
 endfunction
 
 command! README call README()
 function! README()
     :e README.md
-endfunction
-
-command! Uml call Uml()
-function! Uml()
-     let result = system("~/.vim/keikun.vim/scripts/planu " . @%)
-     echo result
 endfunction
 
 let g:spf13_no_autochdir = 0
@@ -841,11 +789,11 @@ function Css(...)
     endif
 endfunction
 
-command! Hx call Hex() 
-function! Hex()
-    let result = system(g:script_dir . "hex2digit " . expand("<cword>"))
-    echo result
-endfunction
+"command! Hx call Hex() 
+"function! Hex()
+"    let result = system(g:script_dir . "hex2digit " . expand("<cword>"))
+"    echo result
+"endfunction
   
 :command! -nargs=0 Wifi :call Wifi()
 function! Wifi()
@@ -1036,14 +984,7 @@ function! OpenSys(cmd)
     echo result
 endfunction
 
-:command! -nargs=0  Miru       :call Grep()
-
 :set wildignore+=**/*class,**/*.png,**/*.jpg,build/**,**/*.hi
-
-function! Grep()
-    let word = expand("<cword>")
-    execute "vim " . word . " **/*"
-endfunction
 
 :highlight LineNr ctermfg=black
 
