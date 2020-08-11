@@ -520,9 +520,15 @@ endfunction
 
 :command! -nargs=0 Hex :call Hex()
 function! Hex()
-    let hexfile = @% . ".16"
-    let result = system("hex -C " . @%. ' > ' . hexfile)
-    exe 'edit ' . hexfile
+    let result = system("16 " . expand("<cword>"))
+    echo result
+endfunction
+
+:command! -nargs=0 Decidump :call Decidump()
+function! Decidump()
+    let decifile = @% . ".de"
+    let result = system("decidump " . @% . ' > ' . decifile)
+    exe 'edit ' . decifile
 endfunction
  
 :command! -nargs=0 Hexdump :call Hexdump()
