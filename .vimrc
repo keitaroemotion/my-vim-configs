@@ -16,6 +16,12 @@ function Bash(...)
   echo result
 endfunction
 
+:command! -nargs=0 Branchprint :call Branchprint()
+function Branchprint() 
+   let result = system('git rev-parse --abbrev-ref HEAD')[:-2] . ' '
+   put =result
+endfunction
+
 :command! -nargs=0 Nm :call Nm()
 function Nm() 
    let assfile = @% . ".nm"
@@ -93,12 +99,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()
 
-let g:airline_theme='cobalt2'
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline_theme='cobalt2'
+" let g:airline#extensions#tabline#enabled = 1
 
 nnoremap Q :b **/*
 nnoremap * :Randopen<CR>
@@ -545,7 +551,7 @@ endfunction
 
 function! Url()
     let line=getline('.')
-    let result = system(g:script_dir . "openhttp " . getline('.'))
+    let result = system("open " . getline('.'))
     echo result
 endfunction
 
