@@ -154,6 +154,11 @@ function! TimeMachine(...)
   endif
 endfunction
 
+:command! -nargs=0 Copyall :call Copyall()
+function! Copyall()
+     let result = system("cat " . @% . " | pbcopy")
+endfunction
+
 function! s:set_vsearch()
   silent normal gv"zy
   let @/ = '\V' . substitute(escape(@z, '/\'), '\n', '\\n', 'g')
