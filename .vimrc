@@ -486,7 +486,7 @@ endfunction
 
 :command! -nargs=0 Markdown :call Markdown()
 function! Markdown()
-    :! sugamd.py | less -R
+    :! sugamd.py % | less -R
 endfunction
 
 :command! -nargs=? Sed :call Sed(<f-args>)
@@ -788,14 +788,14 @@ nnoremap s :w<CR>
 "
 "hi CursorLine    cterm=NONE ctermbg=254 ctermfg=black guibg=NONE guifg=black
 "hi CursorLine   cterm=NONE ctermbg=231 ctermfg=darkmagenta guibg=NONE guifg=black
-hi CursorLine   cterm=underline gui=underline ctermfg=NONE guibg=NONE guifg=black
+"hi CursorLine   cterm=underline gui=underline ctermfg=NONE guibg=NONE guifg=black
 "hi CursorColumn cterm=NONE ctermbg=white ctermfg=white guibg=white guifg=white
-nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
-augroup END
+"nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+"augroup CursorLine
+"  au!
+"  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+"  au WinLeave * setlocal nocursorline
+"augroup END
 
 :command! -nargs=? Css :call Css(<f-args>)
 function Css(...)
