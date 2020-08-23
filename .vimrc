@@ -77,6 +77,14 @@ call dein#add('jceb/vim-orgmode')
 
 "inoremap <C-c> <Esc> 
 
+"
+" better experience in VIM interactive mode
+"
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+
 imap <C-u> <C-o>:call Repeat()<cr>
 set path+=**
 set noswapfile
