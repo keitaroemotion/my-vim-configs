@@ -78,7 +78,7 @@ call dein#add('jceb/vim-orgmode')
 "inoremap <C-c> <Esc> 
 
 "
-" better experience in VIM interactive mode
+" better experience in VIM insert mode
 "
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
