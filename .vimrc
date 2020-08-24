@@ -85,6 +85,11 @@ inoremap <C-f> <Right>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 
+nnoremap <Down>  :res -5<CR>
+nnoremap <Up>    :res +5<CR>
+nnoremap <Left>  :vertical res -5<CR>
+nnoremap <Right> :vertical res +5<CR>
+
 imap <C-u> <C-o>:call Repeat()<cr>
 set path+=**
 set noswapfile
@@ -205,7 +210,7 @@ nnoremap S :e **/
 "
 "  yank and paste
 "
-nnoremap <Right> "*yy
+"nnoremap <Right> "*yy
 
 set langmenu=en_US
 let $LANG = 'en_US'
