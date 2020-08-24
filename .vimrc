@@ -223,7 +223,7 @@ nnoremap T :term ++curwin<CR>
 tnoremap <C-a> :<C-w>N
 nnoremap <C-x>m :res +5<CR>
 nnoremap <C-x>, :res -5<CR>
-nnoremap <C-t> :bot term ++close ++rows=20<CR>
+nnoremap <C-t> :bot term ++close ++rows=25<CR>
 nnoremap <C-x>v :vert term ++close<CR>
 
 command Standup :! echo '-----------------------------------------';cat /wiki/.taskupdate; echo '------------------------------------------'
