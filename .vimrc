@@ -121,7 +121,8 @@ call vundle#end()
 
 nnoremap Q :b **/*
 nnoremap * :Randopen<CR>
-nnoremap ( :Randopenb<CR>
+nnoremap ( :Ranexs<CR>
+nnoremap ) :Ranobj<CR>
 nnoremap <C-n> 5j
 nnoremap <C-p> 5k
 vnoremap <C-n> 5j
@@ -311,13 +312,15 @@ function! Randopen(...)
     execute "edit " . result
 endfunction
 
-:command! -nargs=? Randopenb :call Randopenb(<f-args>)
-function! Randopenb(...)
-    if a:0 >= 1
-        let result = system(g:script_dir . "randomfile -b " . a:1)
-    else
-        let result = system(g:script_dir . "randomfile -b ")
-    endif
+:command! -nargs=? Ranobj :call Ranobj(<f-args>)
+function! Ranobj(...)
+    let result = system("ranobj")
+    execute "edit " . result
+endfunction
+
+:command! -nargs=? Ranexs :call Ranexs(<f-args>)
+function! Ranexs(...)
+    let result = system("ranexs")
     execute "edit " . result
 endfunction
 
