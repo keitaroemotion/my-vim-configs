@@ -16,6 +16,8 @@ function Bash(...)
   echo result
 endfunction
 
+map q <Nop>
+
 :command! -nargs=0 Branchprint :call Branchprint()
 function Branchprint() 
    let result = system('git rev-parse --abbrev-ref HEAD')[:-2] . ' '
@@ -87,7 +89,6 @@ inoremap <C-k> <Up>
 
 nnoremap C :!
 nnoremap <Down>  :res -5<CR>
-nnoremap <Down>  :res -5<CR>
 nnoremap <Up>    :res +5<CR>
 nnoremap <Left>  :vertical res -5<CR>
 nnoremap <Right> :vertical res +5<CR>
@@ -100,7 +101,6 @@ set ma
 let g:ag_prg="/usr/local/bin/ag --vimgrep"
 let g:ag_working_path_mode="r"
 nnoremap s :w<CR>
-nnoremap qq :q<CR>
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set statusline=\PATH:\ %r%F\ \ \ \ \LINE:\ %l/%L/%P\ TIME:\ %{strftime('%c')}
 set nowrapscan
