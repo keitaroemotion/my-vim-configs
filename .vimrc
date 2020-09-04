@@ -87,6 +87,7 @@ inoremap <C-f> <Right>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 
+nnoremap <C-x><C-f> :e
 nnoremap C :!
 nnoremap <Down>  :res -5<CR>
 nnoremap <Up>    :res +5<CR>
