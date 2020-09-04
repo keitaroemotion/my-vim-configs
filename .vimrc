@@ -18,6 +18,21 @@ endfunction
 
 map q <Nop>
 
+:command! -nargs=1 Rename :call Rename(<f-args>)
+function Rename(...) 
+   if a:0 >=1
+       let root    = system("pwd")
+       let file_path = root . '/' . @%
+       let dirname = system("dirname " . @%)
+       let new_file_path = root . '/' . dirname . "/" . a:1
+       let cmd = substitute("mv " . file_path . ' ' . new_file_path, '\n', '', 'g')
+       let result = system(cmd)
+       let dirname_1 = substitute(dirname, '\n', '', 'g') 
+       exe 'edit ' . dirname_1 . "/" . a:1
+   else
+   endif
+endfunction
+
 :command! -nargs=0 Branchprint :call Branchprint()
 function Branchprint() 
    let result = system('git rev-parse --abbrev-ref HEAD')[:-2] . ' '
