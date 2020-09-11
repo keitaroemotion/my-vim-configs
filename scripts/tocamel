@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+
+import inflection
+import sys
+
+if(len(sys.argv) < 2):
+    sys.exit()
+
+for arg in sys.argv[1:]:
+    arg = arg.replace('(', '').replace(')', '').replace(' ', '_')
+    print(inflection.camelize(arg, False))

@@ -20,7 +20,19 @@ function Toenglish(...)
   if a:0 >=1
     let result = system("translate -s ja -t en " . a:1)
   else
-    let result = system("translate -s ja -t en " . expand("<cword>"))
+    let line = getline(".")
+    let result = system("translate -s ja -t en " . line)
+  endif    
+  put =result
+endfunction
+
+:command! -nargs=? Tocamelenglish :call Tocamelenglish(<f-args>)
+function Tocamelenglish(...) 
+  if a:0 >=1
+    let result = system("translate -s ja -t en " . a:1 . "|xs tocamel")
+  else
+    let line = getline(".")
+    let result = system("translate -s ja -t en " . line . "|xs tocamel")
   endif    
   put =result
 endfunction
