@@ -5,6 +5,26 @@ function Strings()
    exe 'edit ' . assfile
 endfunction
 
+:command! -nargs=? Trans :call Trans(<f-args>)
+function Trans(...) 
+  if a:0 >=1
+    let result = system(g:script_dir . "18 " . a:1)
+  else
+    let result = system(g:script_dir . "18 " . expand("<cword>"))
+  endif
+  echo result
+endfunction
+
+:command! -nargs=? Toenglish :call Toenglish(<f-args>)
+function Toenglish(...) 
+  if a:0 >=1
+    let result = system("translate -s ja -t en " . a:1)
+  else
+    let result = system("translate -s ja -t en " . expand("<cword>"))
+  endif    
+  put =result
+endfunction
+
 :command! -nargs=? Bash :call Bash(<f-args>)
 function Bash(...) 
   if a:0 >=1
@@ -267,6 +287,8 @@ set runtimepath+=~/.vim/bundle/neobundle.vim/
 "when vimgrep/grep
 nnoremap <C-j> :cn<CR>
 nnoremap <C-k> :cN<CR>
+
+nnoremap <C-,> :Trans<CR>
 
 "  
 "  if 0 | endif
