@@ -7,5 +7,12 @@ if(len(sys.argv) < 2):
     sys.exit()
 
 for arg in sys.argv[1:]:
-    arg = arg.replace('(', '').replace(')', '').replace(' ', '_')
+    arg = arg.replace('(', '') \
+             .replace(')', '') \
+             .replace(' ', '_') \
+             .replace('-', '') \
+             .replace(':', '') \
+             .replace(';', '') \
+             .replace('.', '')
+
     print(inflection.camelize(arg, False))

@@ -29,10 +29,10 @@ endfunction
 :command! -nargs=? Tocamelenglish :call Tocamelenglish(<f-args>)
 function Tocamelenglish(...) 
   if a:0 >=1
-    let result = system("translate -s ja -t en " . a:1 . "|xs tocamel")
+    let result = system("translate -s ja -t en " . a:1 . "| sed \"s/'//g\" | xs tocamel")
   else
     let line = getline(".")
-    let result = system("translate -s ja -t en " . line . "|xs tocamel")
+    let result = system("translate -s ja -t en " . line . "| sed \"s/'//g\" | xs tocamel")
   endif    
   put =result
 endfunction
@@ -134,6 +134,8 @@ inoremap <C-f> <Right>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 
+nnoremap <C-i> :NERDTreeToggle<CR>
+let g:NERDTreeNodeDelimiter = "\u00a0"
 nnoremap <C-x><C-f> :e
 nnoremap C :!
 nnoremap <Down>  :res -5<CR>
@@ -162,6 +164,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'preservim/nerdtree'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()
