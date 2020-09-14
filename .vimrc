@@ -134,7 +134,7 @@ inoremap <C-f> <Right>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 
-nnoremap <C-i> :NERDTreeToggle<CR>
+nnoremap <C-w> :NERDTreeToggle<CR>
 let g:NERDTreeNodeDelimiter = "\u00a0"
 nnoremap <C-x><C-f> :e
 nnoremap C :!
